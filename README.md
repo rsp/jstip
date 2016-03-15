@@ -39,6 +39,10 @@ achieve the same effect avoiding the construct.
 
 Do we need var?
 ---------------
+Variables seem to be a pretty fundamental feature of the language
+but it turns out that we don't need them. As long as we have
+function calls then function parameters can serve the role of our variables.
+
 With var:
 ```js
 var a = 17;
@@ -52,8 +56,56 @@ Without var:
 })(17);
 ```
 
+Using multiple variables - with var:
+```js
+var a = 17, b = 3;
+console.log( a + b );
+```
 
+Without var:
+```js
+((c, d) => {
+    console.log( c + d );
+})(17, 3);
+```
 
+We can get rid of var.
+
+Multi-parameter functions
+-------------------------
+In the previous example we used a function of multiple parameters.
+Do we really need such functions? No. Every time we need a function
+of two parameters we can use a function of one parameter that returns
+another function of one parameter.
+
+With multiple parameters:
+```js
+var a = (x, y) => x+y;
+console.log( a(2, 3) );
+```
+
+Without multiple parameters:
+```js
+var b = x => y => x+y;
+console.log( b(2)(3) );
+```
+
+We can change our `var` example even further:
+
+With var:
+```js
+var a = 17, b = 3;
+console.log( a + b );
+```
+
+Without var and without multiple parameters:
+```js
+(e => f => {
+    console.log( e + f );
+})(17)(3);
+```
+
+Such functions have some interesting properties - more about this later.
 
 ...
 
