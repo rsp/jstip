@@ -16,7 +16,6 @@ Syntax
 In the examples below I'll be using the ES6 fat arrow function syntax.
 
 So instead of:
-
 ```js
 f = function (x) { return x+5; };
 ```
@@ -29,6 +28,22 @@ Those two functions are the same for our needs
 So every time you see `x=>2*x` just think of `function(x){return 2*x;}`
 only written in a much shorter way.
 
+Also this:
+```js
+f = a => b => a+b;
+```
+is a shorthand of this:
+```js
+f = function (a) { return function (b) { return a+b; }; };
+```
+I don't have to tell you that writing functions such as:
+```js
+f = a => b => c => d => a(b(c))(d);
+```
+is *much* more convenient with the fat arrow syntax.
+
+The question
+------------
 The question is - which parts of the language are there only for convenience
 and can be reduced to other constructs,
 and which parts are fundamentally irreducible.
