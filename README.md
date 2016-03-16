@@ -41,6 +41,7 @@ I don't have to tell you that writing functions such as:
 f = a => b => c => d => a(b(c))(d);
 ```
 is *much* more convenient with the fat arrow syntax.
+(Yes, we will use that function.)
 
 The question
 ------------
